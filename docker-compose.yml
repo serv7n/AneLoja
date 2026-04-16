@@ -12,6 +12,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/loja
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      CLOUDINARY_URL: cloudinary://199641788479325:2H2AEskfvy0SSJA93GV7NTDnF0k@dvg9mzlnh
 
   db:
     image: postgres:16-alpine
