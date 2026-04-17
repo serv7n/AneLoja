@@ -1,7 +1,6 @@
 package leandro.aneloja.config;
 
 import com.cloudinary.Cloudinary;
-import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,7 +9,12 @@ public class CloudinaryConfig {
 
     @Bean
     public Cloudinary cloudinary() {
+        String cloudinaryUrl = System.getenv("CLOUDINARY_URL");
 
-        return new Cloudinary("cloudinary://199641788479325:2H2AEskfvy0SSJA93GV7NTDnF0k@dvg9mzlnh");
+        if (cloudinaryUrl == null || cloudinaryUrl.isEmpty()) {
+            throw new RuntimeException("CLOUDINARY_URL não definida");
+        }
+
+        return new Cloudinary(cloudinaryUrl);
     }
 }

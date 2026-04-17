@@ -1,3 +1,4 @@
+version: "3.9"
 
 services:
   app:
@@ -11,6 +12,8 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/loja
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
+      SPRING_JPA_SHOW_SQL: true
       CLOUDINARY_URL: cloudinary://199641788479325:2H2AEskfvy0SSJA93GV7NTDnF0k@dvg9mzlnh
 
   db:
@@ -22,7 +25,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5431:5432"
+      - "5431:5432" # acesso externo (opcional)
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
