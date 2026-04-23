@@ -18,7 +18,7 @@ public class ProductVariant {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id", nullable = true)
     private Product product;
 
     @Enumerated(EnumType.STRING)

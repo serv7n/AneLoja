@@ -13,7 +13,7 @@ public class ProductImage {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "variant_id", nullable = false)
+    @JoinColumn(name = "variant_id", nullable = true)
     private ProductVariant variant;
 
     @Column(name = "image_url", columnDefinition = "TEXT")

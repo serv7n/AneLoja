@@ -2,4 +2,15 @@ spring:
   application:
     name: aneLojae
 
+  datasource:
+    url: jdbc:postgresql://ep-jolly-brook-ac5uh9wx-pooler.sa-east-1.aws.neon.tech:5432/loja?sslmode=require&channelBinding=require
+    username: neondb_owner
+    password: npg_x1KIB4NPDtWA
 
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

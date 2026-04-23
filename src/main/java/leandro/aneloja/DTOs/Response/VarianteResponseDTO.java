@@ -1,6 +1,5 @@
-package leandro.aneloja.DTOs;
+package leandro.aneloja.DTOs.Response;
 
-import jakarta.persistence.Column;
 import leandro.aneloja.enuns.Color;
 
 import java.math.BigDecimal;
@@ -11,6 +10,6 @@ public record VarianteResponseDTO(
                                    String size,
                                    BigDecimal price,
                                    Integer stock,
-                                   List<ImageResposeDTO> imagens) {
+                                   List<ImageResponseDTO> imagens) {
 
 }

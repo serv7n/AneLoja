@@ -1,33 +1,11 @@
-version: "3.9"
-
 services:
   app:
     build: .
     container_name: spring_app
     ports:
-      - "8081:8080"
-    depends_on:
-      - db
+      - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/loja
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-      SPRING_JPA_HIBERNATE_DDL_AUTO: none
-      SPRING_JPA_SHOW_SQL: true
+      SPRING_DATASOURCE_URL: jdbc:postgresql://ep-jolly-brook-ac5uh9wx-pooler.sa-east-1.aws.neon.tech:5432/loja?sslmode=require&channelBinding=require
+      SPRING_DATASOURCE_USERNAME: neondb_owner
+      SPRING_DATASOURCE_PASSWORD: npg_x1KIB4NPDtWA
       CLOUDINARY_URL: cloudinary://199641788479325:2H2AEskfvy0SSJA93GV7NTDnF0k@dvg9mzlnh
-
-  db:
-    image: postgres:16-alpine
-    container_name: postgres_db
-    restart: always
-    environment:
-      POSTGRES_DB: loja
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5431:5432" # acesso externo (opcional)
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:

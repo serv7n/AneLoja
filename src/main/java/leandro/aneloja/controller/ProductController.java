@@ -1,19 +1,14 @@
 package leandro.aneloja.controller;
 
-import leandro.aneloja.DTOs.ImageResposeDTO;
-import leandro.aneloja.DTOs.ProductResponseDTO;
-import leandro.aneloja.DTOs.VarianteResponseDTO;
-import leandro.aneloja.model.Product;
-import leandro.aneloja.model.ProductVariant;
+import jakarta.validation.Valid;
+import leandro.aneloja.DTOs.Request.ProductRequestDTO;
+import leandro.aneloja.DTOs.Response.ProductResponseDTO;
 import leandro.aneloja.repository.ProductRepository;
 import leandro.aneloja.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -21,11 +16,34 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductController {
     private  final ProductService service;
-    private final ProductRepository repository;
     @GetMapping
-    public ResponseEntity index(    @RequestParam(defaultValue = "0") int page,
-                                    @RequestParam(defaultValue = "10") int size){
+    public ResponseEntity<Page<ProductResponseDTO>> index(@RequestParam(defaultValue = "0") int page,
+                                                          @RequestParam(defaultValue = "10") int size){
 
         return ResponseEntity.ok(service.getProducts(page, size));
     }
+    @GetMapping("/{id}")
+    public ResponseEntity getProduct(@PathVariable Long id){
+        return ResponseEntity.ok(service.getProductById(id));
+    }
+    @PostMapping
+    public ResponseEntity createNewProduct(@RequestBody  @Valid ProductRequestDTO ProductDTO){
+        service.newProduct(ProductDTO);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> editProduct(@RequestBody @Valid ProductRequestDTO productDTO,
+                                         @PathVariable Long id) {
+
+        service.editProduct(productDTO, id);
+        return ResponseEntity.ok().build();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        service.removeProduct(id);
+        return ResponseEntity.ok().build();
+    }
+
+
 }

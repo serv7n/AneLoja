@@ -1,9 +1,4 @@
-package leandro.aneloja.DTOs;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
-import leandro.aneloja.model.ProductVariant;
+package leandro.aneloja.DTOs.Response;
 
 import java.math.BigDecimal;
 import java.util.List;

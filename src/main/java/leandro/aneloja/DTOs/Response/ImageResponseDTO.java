@@ -1,9 +1,9 @@
-package leandro.aneloja.DTOs;
+package leandro.aneloja.DTOs.Response;
 
 import leandro.aneloja.model.ProductImage;
 
-public record ImageResposeDTO(Boolean isMain,
-                              String url) {
+public record ImageResponseDTO(Boolean isMain,
+                               String url) {
     public ProductImage toEntity() {
         ProductImage image = new ProductImage();
         image.setIsMain(isMain); // mantém null se vier null
