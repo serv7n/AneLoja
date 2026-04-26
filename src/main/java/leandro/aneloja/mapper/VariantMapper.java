@@ -1,5 +1,6 @@
 package leandro.aneloja.mapper;
 
+import leandro.aneloja.DTOs.Request.VariantRequestDTO;
 import leandro.aneloja.DTOs.Response.ImageResponseDTO;
 import leandro.aneloja.DTOs.Response.VarianteResponseDTO;
 import leandro.aneloja.model.ProductVariant;
@@ -30,5 +31,14 @@ public class VariantMapper {
                 v.getStock(),
                 images
         );
+    }
+
+    public ProductVariant toEntity(VariantRequestDTO dto){
+        ProductVariant variant = new ProductVariant();
+        variant.setSize(dto.size());
+        variant.setColor(dto.color());
+        variant.setPrice(dto.price());
+        variant.setStock(dto.stock());
+        return  variant;
     }
 }

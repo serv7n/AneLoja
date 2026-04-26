@@ -61,4 +61,11 @@ public class NewProductsTest {
     public void Mostrar(){
         System.out.printf(repository.findAll().toString());
     }
+
+
+    @Test
+    public void test2(){
+        List<ProductImage> p = productImageRepository.findByVariantIsNull();
+        p.forEach(System.out::println);
+    }
 }
